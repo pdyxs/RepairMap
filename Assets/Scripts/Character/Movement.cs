@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
+    public bool OppositeControls = false;
+    public float SelectDelay = 1f;
+
     public Input controls;
 
 
@@ -51,7 +54,7 @@ public class Movement : MonoBehaviour
 
         if (currentlyMoving == false)
         {
-            if (movementVec.y == -1)//(Input.GetKeyDown(KeyCode.DownArrow))
+            if ((!OppositeControls && movementVec.y == -1) || (OppositeControls && movementVec.y == 1))//(Input.GetKeyDown(KeyCode.DownArrow))
             {
                 if (CurrentGrid.y < _grid.squares.Length - 1)
                 {
@@ -59,7 +62,7 @@ public class Movement : MonoBehaviour
                     MoveTo(CurrentGrid);
                 }
             }
-            else if (movementVec.y == 1)//(Input.GetKeyDown(KeyCode.UpArrow))
+            else if ((!OppositeControls && movementVec.y == 1) || (OppositeControls && movementVec.y == -1))//(Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if (CurrentGrid.y > 0)
                 {
@@ -67,7 +70,7 @@ public class Movement : MonoBehaviour
                     MoveTo(CurrentGrid);
                 }
             }
-            else if (movementVec.x == 1)//(Input.GetKeyDown(KeyCode.RightArrow))
+            else if ((!OppositeControls && movementVec.x == 1) || (OppositeControls && movementVec.x == -1))//(Input.GetKeyDown(KeyCode.RightArrow))
             {
                 if (CurrentGrid.x < _grid.squares[CurrentGrid.y].squares.Length - 1)
                 {
@@ -75,7 +78,7 @@ public class Movement : MonoBehaviour
                     MoveTo(CurrentGrid);
                 }
             }
-            else if (movementVec.x == -1)//(Input.GetKeyDown(KeyCode.LeftArrow))
+            else if ((!OppositeControls && movementVec.x == -1) || (OppositeControls && movementVec.x == 1))//(Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 if (CurrentGrid.x > 0)
                 {
@@ -84,7 +87,8 @@ public class Movement : MonoBehaviour
                 }
             }
 
-
+            TimeUtils.RunAfter(()=>CurrentGrid.grid.SelectSquare(CurrentGrid), SelectDelay);
+           
         }
         Debug.Log(movementVec);
     }
