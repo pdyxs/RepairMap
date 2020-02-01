@@ -152,51 +152,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &120935866 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5128716469529693633, guid: 87df0542bef1bbb44a28eb85665779fc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1567610546}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &120935867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120935866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 4500fe3b83e6582478a76776d443167f,
-    type: 3}
-  m_NotificationBehavior: 3
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: b86001f3-3632-46ba-9724-c83fba1f3b10
-    m_ActionName: Player1/Movement[/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/dpad/right]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3a56906c-e7cd-4ee5-9d07-a31622286d1a
-    m_ActionName: Player2/Movement[/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/dpad/right]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: controller
-  m_DefaultActionMap: Player1
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!4 &120935868 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5128716469529693632, guid: 87df0542bef1bbb44a28eb85665779fc,
@@ -306,43 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36abeaac8b7b46842800ba52c3b7270d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1399435749 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5128716469529693633, guid: 87df0542bef1bbb44a28eb85665779fc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1426205786}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1399435750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399435749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 4500fe3b83e6582478a76776d443167f,
-    type: 3}
-  m_NotificationBehavior: 3
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: controller
-  m_DefaultActionMap: 2967a639-b66b-4f8f-a968-87211f555a74
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!4 &1399435751 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5128716469529693632, guid: 87df0542bef1bbb44a28eb85665779fc,

@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!111 &5128716470735485412
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128716468601646172}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: f0503dec7649f7c42847e7227ea0bb5e, type: 2}
+  - {fileID: 7400000, guid: f5cbb66eca82d474ab3812cc27b45f81, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5128716469529693633
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +27,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5128716469529693632}
   - component: {fileID: 5128716469529693635}
+  - component: {fileID: 120935867}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -55,23 +73,45 @@ MonoBehaviour:
   rotateSpeed: 5
   moveSpeed: 2
   start: 0
---- !u!111 &5128716470735485412
-Animation:
+--- !u!114 &120935867
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5128716468601646172}
+  m_GameObject: {fileID: 5128716469529693633}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: f0503dec7649f7c42847e7227ea0bb5e, type: 2}
-  - {fileID: 7400000, guid: f5cbb66eca82d474ab3812cc27b45f81, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 4500fe3b83e6582478a76776d443167f,
+    type: 3}
+  m_NotificationBehavior: 3
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b86001f3-3632-46ba-9724-c83fba1f3b10
+    m_ActionName: Player1/Movement[/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/dpad/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3a56906c-e7cd-4ee5-9d07-a31622286d1a
+    m_ActionName: Player2/Movement[/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/dpad/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: controller
+  m_DefaultActionMap: Player1
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &5128716468601549450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -220,32 +260,16 @@ PrefabInstance:
       value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 441296, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
-      propertyPath: m_LocalRotation.y
+      propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 441296, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 441296, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 441296, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
-      propertyPath: m_LocalRotation.x
+      propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 441296, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 441296, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 441296, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 442318, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
       propertyPath: m_LocalRotation.x
@@ -428,13 +452,13 @@ PrefabInstance:
       value: -0.0000011175871
       objectReference: {fileID: 0}
     - target: {fileID: 9520156, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c95f39a0e1de60e489ff06d269df0a7f, type: 2}
-    - target: {fileID: 9520156, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9520156, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c95f39a0e1de60e489ff06d269df0a7f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7e586317327fe240bef5a82944f49c2, type: 3}
 --- !u!4 &5128716468601989592 stripped
