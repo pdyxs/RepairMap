@@ -7,6 +7,7 @@ using UnityEditor;
 public class GridBuilderEditor : Editor
 {
     private GridBuilder builder => target as GridBuilder;
+    private Grid grid => builder.grid;
 
     public override void OnInspectorGUI()
     {
@@ -20,12 +21,14 @@ public class GridBuilderEditor : Editor
 
     public void Build()
     {
-        for (var i = 0; i != builder.width; ++i)
+        grid.squares = new Grid.GridRow[builder.height];
+        for (var i = 0; i != builder.height; ++i)
         {
-            var x = i - (builder.width - 1f) / 2f;
-            for (var j = 0; j != builder.height; ++j)
+            grid.squares[i] = new Grid.GridRow(builder.width);
+            var y = -(i - (builder.height - 1f) / 2f);
+            for (var j = 0; j != builder.width; ++j)
             {
-                var y = j - (builder.height - 1f) / 2f;
+                var x = j - (builder.width - 1f) / 2f;
 
                 var existingChild = builder.transform.Find(SquareName(i, j));
                 GridSquare square = null;
@@ -37,6 +40,7 @@ public class GridBuilderEditor : Editor
                 {
                     square = existingChild.GetComponent<GridSquare>();
                 }
+                grid.squares[i][j] = square;
 
                 square.transform.localPosition = new Vector3(x * builder.size.x, 0, y * builder.size.y);
                 var ground = square.transform.Find("Ground").transform;
