@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495e86820496d0b479a45af1f622a2f7, type: 3}
   m_Name: New Snake Level
   m_EditorClassIdentifier: 
-  Grid1ObjectPrefabs:
-  - {fileID: 1900476200349650887, guid: 0718d3c59a4b4e044839a76909494bc9, type: 3}
-  Grid2ObjectPrefabs:
-  - {fileID: 1900476200349650887, guid: 0718d3c59a4b4e044839a76909494bc9, type: 3}
-  x: 0
-  y: 0
+  Grid1ObjectPrefab: {fileID: 1900476200349650887, guid: 0718d3c59a4b4e044839a76909494bc9,
+    type: 3}
+  Grid2ObjectPrefab: {fileID: 1900476200349650887, guid: 0718d3c59a4b4e044839a76909494bc9,
+    type: 3}
+  Grid1ObjectLocations:
+  - x: 0
+    y: 0
+  - x: 1
+    y: 3
+  Grid2ObjectLocations:
+  - x: 4
+    y: 4
+  - x: 4
+    y: 3

@@ -5,47 +5,64 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Levels/Stand on end of snakes")]
 public class SnakeLevel : Level
 {
-    public ActivateableObject[] Grid1ObjectPrefabs;
-    public ActivateableObject[] Grid2ObjectPrefabs;
+    public ActivateableObject Grid1ObjectPrefab; //1 straight //2 diag
+    public ActivateableObject Grid2ObjectPrefab;//1 straight //2 diag
 
+    public Coordinates[] Grid1ObjectLocations;
+    public Coordinates[] Grid2ObjectLocations;
 
-    private ActivateableObject Grid1Object
+    private ActivateableObject[] Grid1Object
     {
         get
         {
             if (_grid1Object == null)
             {
-                foreach (ActivateableObject Grid1ObjectPrefab in Grid1ObjectPrefabs)
-                {
-                    _grid1Object = GameObject.Instantiate(Grid1ObjectPrefab, Game.instance.Grid1.squares[y][x].transform);
-                }
+                _grid1Object = returnObjectsToShow(Grid1ObjectLocations, Grid1ObjectPrefab); // GameObject.Instantiate(Grid1ObjectPrefab, Game.instance.Grid1.squares[y][x].transform);
             }
             return _grid1Object;
         }
     }
-    private ActivateableObject _grid1Object;
-    private ActivateableObject Grid2Object
+    private ActivateableObject[] _grid1Object;
+    private ActivateableObject[] Grid2Object
     {
         get
         {
             if (_grid2Object == null)
             {
-                foreach (ActivateableObject Grid2ObjectPrefab in Grid2ObjectPrefabs)
-                {
-                    _grid2Object = GameObject.Instantiate(Grid2ObjectPrefab, Game.instance.Grid2.squares[y][x].transform);
-                }
+               _grid2Object = returnObjectsToShow(Grid2ObjectLocations, Grid2ObjectPrefab);
             }
             return _grid2Object;
         }
     }
-    private ActivateableObject _grid2Object;
+    private ActivateableObject[] _grid2Object;
 
-    public int x;
-    public int y;
 
-    public override ActivateableObject[] ObjectsToShow => new[] { Grid1Object, Grid2Object };
+    ActivateableObject[] returnObjectsToShow(Coordinates[] locationObjets, ActivateableObject actObjects)
+    {
+        List<ActivateableObject> objectsReturn = new List<ActivateableObject>();
+        foreach (Coordinates location in locationObjets)
+        {
+            objectsReturn.Add( GameObject.Instantiate(actObjects, Game.instance.Grid1.squares[location.y][location.x].transform));
+        }
 
-    public override ActivateableObject[] ObjectsToActivate => new[] { Grid1Object, Grid2Object };
+        return objectsReturn.ToArray();
+    }
+
+    private ActivateableObject[] GridObjects
+    {
+        get
+        {
+            List<ActivateableObject> returnList = new List<ActivateableObject>(Grid1Object);
+
+            returnList.AddRange(Grid2Object);
+
+            return returnList.ToArray();
+        }
+    }
+
+    public override ActivateableObject[] ObjectsToShow => GridObjects;
+
+    public override ActivateableObject[] ObjectsToActivate => new ActivateableObject[] {};
 
 
 
@@ -53,9 +70,10 @@ public class SnakeLevel : Level
 
     public override bool IsFinished()
     {
-        return Grid1.currentlySelected != null &&
+        return false;
+        /*Grid1.currentlySelected != null &&
             Grid1.currentlySelected.MyObjects.Contains(Grid1Object) &&
             Grid2.currentlySelected != null &&
-            Grid2.currentlySelected.MyObjects.Contains(Grid2Object);
+            Grid2.currentlySelected.MyObjects.Contains(Grid2Object);*/
     }
 }
