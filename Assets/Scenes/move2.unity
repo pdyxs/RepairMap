@@ -445,21 +445,6 @@ PrefabInstance:
       propertyPath: DefaultGrid
       value: 
       objectReference: {fileID: 973602255}
-    - target: {fileID: 5128716469529693635, guid: 87df0542bef1bbb44a28eb85665779fc,
-        type: 3}
-      propertyPath: SelectDelay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5128716469529693635, guid: 87df0542bef1bbb44a28eb85665779fc,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5128716469529693635, guid: 87df0542bef1bbb44a28eb85665779fc,
-        type: 3}
-      propertyPath: rotateSpeed
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87df0542bef1bbb44a28eb85665779fc, type: 3}
 --- !u!1001 &6040894324937925191

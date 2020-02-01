@@ -62,6 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f1f37cb3ca01944b393b335f2beba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OppositeControls: 0
+  SelectDelay: 2
   offset: {x: 0, y: 0, z: 0}
   DefaultGrid: {fileID: 0}
   CurrentGrid: {fileID: 0}
@@ -70,8 +72,8 @@ MonoBehaviour:
   anim: {fileID: 5128716470735485412}
   floatAnim: Floatmove
   wobbleAnim: Wooblemove
-  rotateSpeed: 5
-  moveSpeed: 2
+  rotateSpeed: 8
+  moveSpeed: 3
   start: 0
 --- !u!114 &120935867
 MonoBehaviour:
