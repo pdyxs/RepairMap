@@ -3129,12 +3129,12 @@ PrefabInstance:
     - target: {fileID: 1652418294556143915, guid: 7e3f164a74406244283ba0f4e6c54c79,
         type: 3}
       propertyPath: width
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1652418294556143915, guid: 7e3f164a74406244283ba0f4e6c54c79,
         type: 3}
       propertyPath: height
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1652418294556143916, guid: 7e3f164a74406244283ba0f4e6c54c79,
         type: 3}
