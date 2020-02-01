@@ -22,6 +22,11 @@ public class Game : MonoSingleton<Game>
         }
     }
 
+    private void Start()
+    {
+        CurrentLevel.DoStartLevel();
+    }
+
     public void OnSelectionChanged(Grid grid, GridSquare newSelection)
     {
         if (CurrentLevel != null)
@@ -37,6 +42,7 @@ public class Game : MonoSingleton<Game>
         {
             if (CurrentLevel.IsFinished())
             {
+                CurrentLevel.DoWinLevel();
                 GoToNextLevel();
             }
         }
@@ -45,5 +51,7 @@ public class Game : MonoSingleton<Game>
     public void GoToNextLevel()
     {
         _currentLevel++;
+        if (CurrentLevel != null)
+            CurrentLevel.DoStartLevel();
     }
 }

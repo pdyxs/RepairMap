@@ -21,6 +21,8 @@ public class GridSquare : MonoBehaviour
     public int x;
     public int y;
 
+    public List<ActivateableObject> MyObjects { get; private set; } = new List<ActivateableObject>();
+
     public bool IsAt(int x, int y)
     {
         return this.x == x && this.y == y;
@@ -32,11 +34,19 @@ public class GridSquare : MonoBehaviour
     {
         isSelected = true;
         CustomEvent.Trigger(gameObject, "Select");
+        foreach (var obj in MyObjects)
+        {
+            obj.Select();
+        }
     }
 
     public void Deselect()
     {
         isSelected = false;
         CustomEvent.Trigger(gameObject, "Deselect");
+        foreach (var obj in MyObjects)
+        {
+            obj.Deselect();
+        }
     }
 }
