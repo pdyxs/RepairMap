@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Game : MonoSingleton<Game>
+﻿public class Game : MonoSingleton<Game>
 {
     public Grid Grid1;
     public Grid Grid2;
+
+    public float endLevelDelay = 0.5f;
 
     public Level[] Levels;
 
@@ -20,6 +18,11 @@ public class Game : MonoSingleton<Game>
             }
             return Levels[_currentLevel];
         }
+    }
+
+    public void StartGame()
+    {
+        CurrentLevel.DoStartLevel();
     }
 
     public void OnSelectionChanged(Grid grid, GridSquare newSelection)
@@ -37,7 +40,20 @@ public class Game : MonoSingleton<Game>
         {
             if (CurrentLevel.IsFinished())
             {
-                GoToNextLevel();
+                TimeUtils.RunAfter(() =>
+                {
+                    CurrentLevel.DoWinLevel();
+                    if (_currentLevel < Grid1.gate.Lights.Length)
+                    {
+                        Grid1.gate.Lights[_currentLevel].SetActive(true);
+                    }
+                    if (_currentLevel < Grid2.gate.Lights.Length)
+                    {
+                        Grid2.gate.Lights[_currentLevel].SetActive(true);
+                    }
+                    GoToNextLevel();
+                }, endLevelDelay);
+                
             }
         }
     }
@@ -45,5 +61,7 @@ public class Game : MonoSingleton<Game>
     public void GoToNextLevel()
     {
         _currentLevel++;
+        if (CurrentLevel != null)
+            CurrentLevel.DoStartLevel();
     }
 }

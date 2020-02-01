@@ -10,6 +10,8 @@ public class Grid : MonoBehaviour
 
     public GridRow[] squares;
 
+    public Gate gate;
+
     public void SelectSquare(GridSquare square)
     {
         if (currentlySelected != null)
