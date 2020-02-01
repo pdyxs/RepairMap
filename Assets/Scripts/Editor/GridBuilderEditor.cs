@@ -47,8 +47,12 @@ public class GridBuilderEditor : Editor
                 square.transform.localPosition = new Vector3(x * builder.size.x, 0, y * builder.size.y);
                 var ground = square.transform.Find("Ground").transform;
                 ground.localScale = new Vector3(builder.size.x, ground.localScale.y, builder.size.y);
+
+                EditorUtility.SetDirty(square);
             }
         }
+
+        EditorUtility.SetDirty(grid);
     }
 
     private string SquareName(int i, int j)
