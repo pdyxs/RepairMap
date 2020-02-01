@@ -17,6 +17,8 @@ public class Grid : MonoBehaviour
 
         currentlySelected = square;
         square.Select();
+
+        Game.instance.OnSelectionChanged(this, square);
     }
 
     [System.Serializable]

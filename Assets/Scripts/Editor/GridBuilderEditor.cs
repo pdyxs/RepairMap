@@ -41,6 +41,8 @@ public class GridBuilderEditor : Editor
                     square = existingChild.GetComponent<GridSquare>();
                 }
                 grid.squares[i][j] = square;
+                square.x = j;
+                square.y = i;
 
                 square.transform.localPosition = new Vector3(x * builder.size.x, 0, y * builder.size.y);
                 var ground = square.transform.Find("Ground").transform;
