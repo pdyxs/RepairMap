@@ -40,20 +40,23 @@
         {
             if (CurrentLevel.IsFinished())
             {
+                var lastLevel = CurrentLevel;
+                var lastLevelIndex = _currentLevel;
+                GoToNextLevel();
                 TimeUtils.RunAfter(() =>
                 {
-                    CurrentLevel.DoWinLevel();
-                    if (_currentLevel < Grid1.gate.Lights.Length)
+                    lastLevel.DoWinLevel();
+                    if (lastLevelIndex < Grid1.gate.Lights.Length)
                     {
-                        Grid1.gate.Lights[_currentLevel].SetActive(true);
+                        Grid1.gate.Lights[lastLevelIndex].SetActive(true);
                     }
-                    if (_currentLevel < Grid2.gate.Lights.Length)
+                    if (lastLevelIndex < Grid2.gate.Lights.Length)
                     {
-                        Grid2.gate.Lights[_currentLevel].SetActive(true);
+                        Grid2.gate.Lights[lastLevelIndex].SetActive(true);
                     }
-                    GoToNextLevel();
+                    if (CurrentLevel != null)
+                        CurrentLevel.DoStartLevel();
                 }, endLevelDelay);
-                
             }
         }
     }
@@ -61,7 +64,5 @@
     public void GoToNextLevel()
     {
         _currentLevel++;
-        if (CurrentLevel != null)
-            CurrentLevel.DoStartLevel();
     }
 }

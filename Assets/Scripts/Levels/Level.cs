@@ -25,9 +25,11 @@ public abstract class Level : ScriptableObject
         foreach (var obj in ObjectsToShow)
         {
             obj.Show();
-            obj.parentSquare.MyObjects.Add(obj);
         }
+        OnStarted();
     }
+
+    protected virtual void OnStarted() { }
 
     public void DoWinLevel()
     {

@@ -12,6 +12,8 @@ public class ActivateableObject : MonoBehaviour
             if (_parentSquare == null)
             {
                 _parentSquare = transform.GetComponentInParent<GridSquare>();
+                if (_parentSquare != null)
+                    _parentSquare.MyObjects.Add(this);
             }
             return _parentSquare;
         }
@@ -25,6 +27,7 @@ public class ActivateableObject : MonoBehaviour
 
     public void Show()
     {
+        var p = parentSquare;
         CustomEvent.Trigger(gameObject, "Show");
     }
 

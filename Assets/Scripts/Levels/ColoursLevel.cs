@@ -21,23 +21,64 @@ public class ColoursLevel : Level
         }
     }
 
-    public override ActivateableObject[] ObjectsToActivate => throw new System.NotImplementedException();
+    public override ActivateableObject[] ObjectsToActivate {
+        get {
+            var ret = new List<ActivateableObject>(Grid1CreatedIndicators.Values);
+            ret.AddRange(Grid2CreatedIndicators.Values);
+            return ret.ToArray();
+        }
+    }
 
-    public ActivateableObject MidwayObjectPrefab;
+    public int numberToWin = 3;
+
+    public ActivateableObject IndicatorObjectPrefab;
 
     public ActivateableObject CompletePrefab;
 
     public List<ColourSetup> Setups;
 
+    protected override void OnStarted()
+    {
+        base.OnStarted();
+        Grid1CreatedIndicators.Clear();
+        Grid2CreatedIndicators.Clear();
+    }
+
     public override void OnSelectionChanged(Grid grid, GridSquare newSelection)
     {
         base.OnSelectionChanged(grid, newSelection);
-        
+        var grid1Prefab = PrefabAtCoords(Grid1.currentlySelected.x, Grid1.currentlySelected.y, 1);
+        if (grid1Prefab == null)
+        {
+            return;
+        }
+        var grid2Prefab = PrefabAtCoords(Grid2.currentlySelected.x, Grid2.currentlySelected.y, 2);
+        if (grid2Prefab != grid1Prefab)
+        {
+            return;
+        }
+
+        if (!Grid1CreatedIndicators.ContainsKey(grid1Prefab))
+        {
+            var newIndicator = GameObject.Instantiate(IndicatorObjectPrefab, Grid1.currentlySelected.transform);
+            newIndicator.Show();
+            Grid1CreatedIndicators[grid1Prefab] = newIndicator;
+        }
+
+        if (!Grid2CreatedIndicators.ContainsKey(grid2Prefab))
+        {
+            var newIndicator = GameObject.Instantiate(IndicatorObjectPrefab, Grid2.currentlySelected.transform);
+            newIndicator.Show();
+            Grid2CreatedIndicators[grid2Prefab] = newIndicator;
+        }
     }
+
+    private Dictionary<ActivateableObject, ActivateableObject> Grid1CreatedIndicators = new Dictionary<ActivateableObject, ActivateableObject>();
+    private Dictionary<ActivateableObject, ActivateableObject> Grid2CreatedIndicators = new Dictionary<ActivateableObject, ActivateableObject>();
 
     public override bool IsFinished()
     {
-        return false;
+        return Grid1CreatedIndicators.Count == numberToWin;
     }
 
     public ActivateableObject PrefabAtCoords(int x, int y, int grid)

@@ -577,43 +577,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6040894324524191539, guid: 415e894f80d9d3143934c064d1b5d281,
         type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6040894324524191539, guid: 415e894f80d9d3143934c064d1b5d281,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6040894324524191539, guid: 415e894f80d9d3143934c064d1b5d281,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 44.997
-      objectReference: {fileID: 0}
-    - target: {fileID: 6040894324524191539, guid: 415e894f80d9d3143934c064d1b5d281,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6040894324524191539, guid: 415e894f80d9d3143934c064d1b5d281,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.9238896
-      objectReference: {fileID: 0}
-    - target: {fileID: 6040894324524191539, guid: 415e894f80d9d3143934c064d1b5d281,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.38265926
-      objectReference: {fileID: 0}
-    - target: {fileID: 6040894324524191539, guid: 415e894f80d9d3143934c064d1b5d281,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 6040894324524191539, guid: 415e894f80d9d3143934c064d1b5d281,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6040894324524191539, guid: 415e894f80d9d3143934c064d1b5d281,
         type: 3}
@@ -637,7 +602,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7264740360117369733, guid: 415e894f80d9d3143934c064d1b5d281,
         type: 3}
+      propertyPath: Levels.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264740360117369733, guid: 415e894f80d9d3143934c064d1b5d281,
+        type: 3}
       propertyPath: Levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b87dd2cce29141e488bff16139f70b1b,
+        type: 2}
+    - target: {fileID: 7264740360117369733, guid: 415e894f80d9d3143934c064d1b5d281,
+        type: 3}
+      propertyPath: Levels.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 821c37a12965eac4085abbe05c5cdb8a,
         type: 2}
