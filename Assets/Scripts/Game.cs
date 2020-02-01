@@ -20,6 +20,24 @@
         }
     }
 
+    public bool AreBothAt(Coordinates coords)
+    {
+        return Grid1.IsAt(coords) && Grid2.IsAt(coords);
+    }
+
+    public bool AreBothAt(int x, int y)
+    {
+        return Grid1.IsAt(x, y) && Grid2.IsAt(x, y);
+    }
+
+    public Grid this[int i]
+    {
+        get
+        {
+            return i == 1 ? Grid1 : Grid2;
+        }
+    }
+
     public void StartGame()
     {
         CurrentLevel.DoStartLevel();

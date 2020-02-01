@@ -8,43 +8,129 @@ public class GoToSameObjectLevel : Level
     public ActivateableObject Grid1ObjectPrefab;
     public ActivateableObject Grid2ObjectPrefab;
 
-    private ActivateableObject Grid1Object
+    public List<Stage> stages;
+
+    public bool allAtOnce = false;
+
+    private int StagesComplete { get; set; } = 0;
+
+    private void OnEnable()
     {
-        get
+        StagesComplete = 0;
+    }
+
+    protected override void OnStarted()
+    {
+        base.OnStarted();
+        StagesComplete = 0;
+        foreach (var stage in stages)
         {
-            if (_grid1Object == null)
-            {
-                _grid1Object = GameObject.Instantiate(Grid1ObjectPrefab, Game.instance.Grid1.squares[y][x].transform);
-            }
-            return _grid1Object;
+            stage.isComplete = false;
         }
     }
-    private ActivateableObject _grid1Object;
-    private ActivateableObject Grid2Object
-    {
+
+    public override ActivateableObject[] ObjectsToShow {
         get
         {
-            if (_grid2Object == null)
+            if (!allAtOnce)
             {
-                _grid2Object = GameObject.Instantiate(Grid2ObjectPrefab, Game.instance.Grid2.squares[y][x].transform);
+                if (stages.Count == 0) return new ActivateableObject[] { };
+
+                return stages[0].Objects(this);
+            } 
+            else
+            {
+                return ObjectsToActivate;
             }
-            return _grid2Object;
         }
     }
-    private ActivateableObject _grid2Object;
 
-    public int x;
-    public int y;
+    public override ActivateableObject[] ObjectsToActivate {
+        get
+        {
+            var ret = new List<ActivateableObject>();
+            foreach (var stage in stages)
+            {
+                ret.AddRange(stage.Objects(this));
+            }
+            return ret.ToArray();
+        }
+    }
 
-    public override ActivateableObject[] ObjectsToShow => new [] { Grid1Object, Grid2Object };
+    public override void OnSelectionChanged(Grid grid, GridSquare newSelection)
+    {
+        base.OnSelectionChanged(grid, newSelection);
+        if (allAtOnce)
+        {
+            foreach (var stage in stages)
+            {
+                if (!stage.isComplete && stage.isSatisfied())
+                {
+                    MarkComplete(stage);
+                    break;
+                }
+            }
+        } 
+        else
+        {
+            if (StagesComplete < stages.Count && stages[StagesComplete].isSatisfied())
+            {
+                MarkComplete(stages[StagesComplete]);
+            }
+        }
+    }
 
-    public override ActivateableObject[] ObjectsToActivate => new[] { Grid1Object, Grid2Object };
+    private void MarkComplete(Stage stage)
+    {
+        stage.MarkComplete();
+        StagesComplete++;
+        
+        if (!allAtOnce && StagesComplete < stages.Count)
+        {
+            foreach (var obj in stages[StagesComplete].Objects(this))
+            {
+                obj.Show();
+            }
+        }
+    }
 
     public override bool IsFinished()
     {
-        return Grid1.currentlySelected != null &&
-            Grid1.currentlySelected.MyObjects.Contains(Grid1Object) &&
-            Grid2.currentlySelected != null &&
-            Grid2.currentlySelected.MyObjects.Contains(Grid2Object);
+        return StagesComplete == stages.Count;
+    }
+
+    [System.Serializable]
+    public class Stage
+    {
+        public Coordinates coords;
+
+        public bool isComplete { get; set; } = false;
+        
+        public ActivateableObject Grid1Object { get; private set; }
+        public ActivateableObject Grid2Object { get; private set; }
+
+        public ActivateableObject[] Objects(GoToSameObjectLevel level)
+        {
+            if (Grid1Object == null || Grid2Object == null)
+                Create(level);
+            return new[] { Grid1Object, Grid2Object };
+        }
+
+        public void MarkComplete()
+        {
+            isComplete = true;
+            Grid1Object.MarkComplete();
+            Grid2Object.MarkComplete();
+        }
+
+        public bool isSatisfied()
+        {
+            return Game.instance.AreBothAt(coords);
+        }
+
+        public void Create(GoToSameObjectLevel level)
+        {
+            (Grid1Object, Grid2Object) = level.CreateAt(level.Grid1ObjectPrefab, level.Grid2ObjectPrefab, coords);
+        }
     }
 }

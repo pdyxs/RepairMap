@@ -58,14 +58,14 @@ public class ColoursLevel : Level
 
         if (!Grid1CreatedIndicators.ContainsKey(grid1Prefab))
         {
-            var newIndicator = GameObject.Instantiate(IndicatorObjectPrefab, Grid1.currentlySelected.transform);
+            var newIndicator = CreateAt(IndicatorObjectPrefab, Grid1.currentlySelected);
             newIndicator.Show();
             Grid1CreatedIndicators[grid1Prefab] = newIndicator;
         }
 
         if (!Grid2CreatedIndicators.ContainsKey(grid2Prefab))
         {
-            var newIndicator = GameObject.Instantiate(IndicatorObjectPrefab, Grid2.currentlySelected.transform);
+            var newIndicator = CreateAt(IndicatorObjectPrefab, Grid2.currentlySelected);
             newIndicator.Show();
             Grid2CreatedIndicators[grid2Prefab] = newIndicator;
         }
@@ -117,24 +117,11 @@ public class ColourSetup
         Grid2Objects = new List<ActivateableObject>();
         foreach (var coord in Coordinates)
         {
-            var o1 = GameObject.Instantiate(Grid1Object, Game.instance.Grid1.squares[coord.y][coord.x].transform);
-            var o2 = GameObject.Instantiate(Grid2Object, Game.instance.Grid2.squares[coord.y][coord.x].transform);
+            var (o1, o2) = level.CreateAt(Grid1Object, Grid2Object, coord.x, coord.y);
             Grid1Objects.Add(o1);
             Grid2Objects.Add(o2);
         }
     }
 
     public List<Coordinates> Coordinates;
-}
-
-[System.Serializable]
-public class Coordinates
-{
-    public int x;
-    public int y;
-
-    public GridSquare Square(Grid grid)
-    {
-        return grid.squares[y][x];
-    }
 }

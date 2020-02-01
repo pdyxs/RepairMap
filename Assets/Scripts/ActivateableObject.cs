@@ -36,6 +36,11 @@ public class ActivateableObject : MonoBehaviour
         CustomEvent.Trigger(gameObject, "Select");
     }
 
+    public void MarkComplete()
+    {
+        CustomEvent.Trigger(gameObject, "Mark Complete");
+    }
+
     public void Deselect()
     {
         CustomEvent.Trigger(gameObject, "Deselect");

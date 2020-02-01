@@ -12,6 +12,16 @@ public class Grid : MonoBehaviour
 
     public Gate gate;
 
+    public bool IsAt(int x, int y)
+    {
+        return currentlySelected.x == x && currentlySelected.y == y;
+    }
+
+    public bool IsAt(Coordinates coords)
+    {
+        return IsAt(coords.x, coords.y);
+    }
+
     public void SelectSquare(GridSquare square)
     {
         if (currentlySelected != null)
