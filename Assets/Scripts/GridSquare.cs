@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ludiq;
+using Bolt;
 
 public class GridSquare : MonoBehaviour
 {
@@ -29,10 +31,12 @@ public class GridSquare : MonoBehaviour
     public void Select()
     {
         isSelected = true;
+        CustomEvent.Trigger(gameObject, "Select");
     }
 
     public void Deselect()
     {
         isSelected = false;
+        CustomEvent.Trigger(gameObject, "Deselect");
     }
 }
