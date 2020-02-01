@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
 
-public abstract class Level : MonoBehaviour
+public abstract class Level : ScriptableObject
 {
     public Game game => Game.instance;
     public Grid Grid1 => game.Grid1;
