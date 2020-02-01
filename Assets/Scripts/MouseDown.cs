@@ -13,13 +13,13 @@ public class MouseDown : MonoBehaviour
 
         if(winningCondition == null)
         {
-            Debug.LogError("Couldn't find winning condition in mousedown");
+            //Debug.LogError("Couldn't find winning condition in mousedown");
         }
     }
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
             if (mouseInsideViewport(cameraUsed) == true)
             {
@@ -37,7 +37,7 @@ public class MouseDown : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
     }
 
 
@@ -47,6 +47,8 @@ public class MouseDown : MonoBehaviour
 
         //Vector3 mouseViewPos = local_cam.ScreenToViewportPoint(Input.mousePosition);
 
-        return local_cam.pixelRect.Contains(Input.mousePosition);
+        //return local_cam.pixelRect.Contains(Input.mousePosition);
+
+        return false;
     }
 }

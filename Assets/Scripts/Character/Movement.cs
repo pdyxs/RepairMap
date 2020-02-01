@@ -1,59 +1,244 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    Vector3 offset;
+    public Input controls;
+
+
+    public Vector3 offset;
+
+    Grid _grid;
+
+    public GridSquare DefaultGrid;
+    public GridSquare CurrentGrid;
+
+    public Transform characterMovementTrans;
+    public Transform characterRotationTrans;
+
+    public Animation anim;
+    public string floatAnim; 
+    public string wobbleAnim;
+
+
+    bool currentlyMoving = false;
+
+
     Transform targetTransform;
 
-    public float moveSpeed = 0.1f;
     public float rotateSpeed = 0.1f;
+    public float moveSpeed = 0.1f;
 
-    public Vector3 target;
 
+    //debug
     public bool start = false;
+
+
+    PlayerInput playerInput;
+    InputAction action;
+
+    private void Awake()
+    {
+        //controls.Player1.Movement.performed += ctx => Movement_performed(ctx.ReadValue<Vector2>());
+    }
+
+        
+    public void OnMovement(Vector2 movementVec)
+    {
+        //Vector2 movementVec = inputValue.Get<Vector2>();
+
+        if (currentlyMoving == false)
+        {
+            if (movementVec.y == -1)//(Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (CurrentGrid.y < _grid.squares.Length - 1)
+                {
+                    CurrentGrid = _grid.squares[CurrentGrid.y + 1].squares[CurrentGrid.x];
+                    MoveTo(CurrentGrid);
+                }
+            }
+            else if (movementVec.y == 1)//(Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (CurrentGrid.y > 0)
+                {
+                    CurrentGrid = _grid.squares[CurrentGrid.y - 1].squares[CurrentGrid.x];
+                    MoveTo(CurrentGrid);
+                }
+            }
+            else if (movementVec.x == 1)//(Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if (CurrentGrid.x < _grid.squares[CurrentGrid.y].squares.Length - 1)
+                {
+                    CurrentGrid = _grid.squares[CurrentGrid.y].squares[CurrentGrid.x + 1];
+                    MoveTo(CurrentGrid);
+                }
+            }
+            else if (movementVec.x == -1)//(Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (CurrentGrid.x > 0)
+                {
+                    CurrentGrid = _grid.squares[CurrentGrid.y].squares[CurrentGrid.x - 1];
+                    MoveTo(CurrentGrid);
+                }
+            }
+
+
+        }
+        Debug.Log(movementVec);
+    }
+
+    private void Start()
+    {
+        playerInput = this.GetComponent<PlayerInput>();
+        action = playerInput.actions["Movement"];
+
+        if (characterMovementTrans == null)
+        {
+            Debug.LogError("set characterMovementTrans in Movement");
+        }
+
+        if (characterRotationTrans == null)
+        {
+            Debug.LogError("set characterRotationTrans in Movement");
+        }
+
+        if (DefaultGrid != null)
+        {
+            setLocationInstant(DefaultGrid);
+            CurrentGrid = DefaultGrid;
+
+            _grid = DefaultGrid.grid;
+        }
+        else
+        {
+            Debug.LogError("no default grid in Movement");
+        }
+    }
+    void setLocationInstant(GridSquare defaultGrid)
+    {
+        characterMovementTrans.position = defaultGrid.transform.position + offset;
+    }
+
+
+
 
     private void Update()
     {
         if(start == true)
         {
-           // MoveToPosition(Vector3.zero);
+            MoveTo(DefaultGrid);
+            // MoveToPosition(Vector3.zero);
             start = false;
         }
 
 
+        Vector2 movementValue = action.ReadValue<Vector2>();
+        OnMovement(movementValue);
 
-        float rotateStep = rotateSpeed * Time.deltaTime;
-        // transform.rotation = Quaternion.RotateTowards(transform.rotation, target, rotateStep);
-
-        Vector3 targetDirection = target - transform.position;
-
-        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateStep);
-    }
-
-    public void MoveToPosition(Vector3 moveToPosition)
-    {
-        StartCoroutine(moveToFace(moveToPosition));
-    }
-
-
-
-
-
-    IEnumerator moveToFace(Vector3 moveToPosition)
-    {
-        float rotateStep = rotateSpeed * Time.deltaTime;
-
-
-       // while (transform.rotation != target)
+        /*if (currentlyMoving == false)
         {
-            //transform.rotation = Quaternion.RotateTowards(transform.rotation, target, rotateStep);
+            if ( //(Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (CurrentGrid.y < _grid.squares.Length -1)
+                {
+                    CurrentGrid = _grid.squares[CurrentGrid.y + 1 ].squares[CurrentGrid.x ];
+                    MoveTo(CurrentGrid);
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (CurrentGrid.y > 0)
+                {
+                    CurrentGrid = _grid.squares[CurrentGrid.y -1].squares[CurrentGrid.x];
+                    MoveTo(CurrentGrid);
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if (CurrentGrid.x < _grid.squares[CurrentGrid.y].squares.Length - 1)
+                {
+                    CurrentGrid = _grid.squares[CurrentGrid.y].squares[CurrentGrid.x + 1];
+                    MoveTo(CurrentGrid);
+                }
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (CurrentGrid.x > 0)
+                {
+                    CurrentGrid = _grid.squares[CurrentGrid.y].squares[CurrentGrid.x - 1];
+                    MoveTo(CurrentGrid);
+                }
+            }
+        }*/
+
+
+    }
+
+    void inputMoveRight()
+    {
+        if (currentlyMoving == false)
+        {
+            if (CurrentGrid.x < _grid.squares[CurrentGrid.y].squares.Length - 1)
+            {
+                CurrentGrid = _grid.squares[CurrentGrid.y].squares[CurrentGrid.x + 1];
+                MoveTo(CurrentGrid);
+            }
+        }
+    }
+
+
+    public void MoveTo(GridSquare gridTarget)
+    {
+        StartCoroutine(moveNextLocation(gridTarget));
+    }
+
+
+    public IEnumerator moveNextLocation(GridSquare gridTarget)
+    {
+        currentlyMoving = true;
+
+        //rotate first
+
+
+        Vector3 targetDirection = gridTarget.transform.position - characterRotationTrans.position;
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+        while (Quaternion.Angle(characterRotationTrans.rotation, targetRotation) > 0.5f)
+        {
+            float rotateStep = rotateSpeed * Time.deltaTime;
+            characterRotationTrans.rotation = Quaternion.Slerp(characterRotationTrans.rotation, targetRotation, rotateStep);
+            yield return null;
         }
 
 
-        yield return null;
+        //float
+        //anim[floatAnim].speed = 1;
+        //anim.Play(floatAnim);
+
+
+        //move
+        anim[wobbleAnim].wrapMode = WrapMode.Loop;
+        anim.Play(wobbleAnim);
+
+        //set down
+        // anim[floatAnim].speed = -1;
+        //anim.Play(floatAnim);
+
+        yield return new WaitForSeconds(0.2f);
+
+        while(Vector3.Distance(characterMovementTrans.position, gridTarget.transform.position) > 0.3f)
+        {
+            float moveStep = moveSpeed * Time.deltaTime;
+            characterMovementTrans.transform.position = Vector3.MoveTowards(characterMovementTrans.transform.position, gridTarget.transform.position, moveStep);
+            yield return null;
+        }
+        anim.Stop(wobbleAnim);
+
+        currentlyMoving = false;
     }
 }

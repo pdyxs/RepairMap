@@ -5,24 +5,14 @@ using UnityEngine;
 public class Placement : MonoBehaviour
 {
 
-    public int[,] DefaultGrid;
 
-    public Transform characterMovementTrans;
-    public Transform characterRotationTrans;
 
-    private void Start()
+
+
+    IEnumerator moveNextLocation(GridSquare gridTarget)
     {
-        if(characterMovementTrans == null)
-        {
-            Debug.LogError("set characterMovementTrans in Placement");
-        }
-
-        if (characterRotationTrans == null)
-        {
-            Debug.LogError("set characterRotationTrans in Placement");
-        }
+        yield return null;
     }
-
 
 
 }
