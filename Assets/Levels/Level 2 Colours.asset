@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4725f44106727594f92caa80bf21ae68, type: 3}
+  m_Name: Level 2 Colours
+  m_EditorClassIdentifier: 
+  CompletePrefab: {fileID: 0}
+  Setups:
+  - Grid1Object: {fileID: 7764039087338902452, guid: 69b74da0c2a7c0f439a0177e8ce8199e,
+      type: 3}
+    Grid2Object: {fileID: 8354543834785088488, guid: bcf702e1c171de24dbc5f3c39ecfb0c6,
+      type: 3}
+    Coordinates:
+    - x: 1
+      y: 1
+    - x: 1
+      y: 5
+  - Grid1Object: {fileID: 8354543834785088488, guid: bcf702e1c171de24dbc5f3c39ecfb0c6,
+      type: 3}
+    Grid2Object: {fileID: 5030568835550820805, guid: 22e444b75dca3f94a92fecff0f643ee6,
+      type: 3}
+    Coordinates:
+    - x: 3
+      y: 2
+    - x: 5
+      y: 5
+  - Grid1Object: {fileID: 5030568835550820805, guid: 22e444b75dca3f94a92fecff0f643ee6,
+      type: 3}
+    Grid2Object: {fileID: 7764039087338902452, guid: 69b74da0c2a7c0f439a0177e8ce8199e,
+      type: 3}
+    Coordinates:
+    - x: 3
+      y: 5
+    - x: 5
+      y: 1

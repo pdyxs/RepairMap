@@ -18,6 +18,11 @@ public class ActivateableObject : MonoBehaviour
     }
     private GridSquare _parentSquare;
 
+    public void Hide()
+    {
+        CustomEvent.Trigger(gameObject, "Hide");
+    }
+
     public void Show()
     {
         CustomEvent.Trigger(gameObject, "Show");

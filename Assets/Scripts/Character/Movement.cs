@@ -90,7 +90,6 @@ public class Movement : MonoBehaviour
             TimeUtils.RunAfter(()=>CurrentGrid.grid.SelectSquare(CurrentGrid), SelectDelay);
            
         }
-        Debug.Log(movementVec);
     }
 
     private void Start()
