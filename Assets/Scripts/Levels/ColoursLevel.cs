@@ -33,8 +33,6 @@ public class ColoursLevel : Level
 
     public ActivateableObject IndicatorObjectPrefab;
 
-    public ActivateableObject CompletePrefab;
-
     public List<ColourSetup> Setups;
 
     protected override void OnStarted()
