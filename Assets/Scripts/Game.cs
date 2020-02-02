@@ -1,4 +1,6 @@
-﻿public class Game : MonoSingleton<Game>
+﻿using UnityEngine.Events;
+
+public class Game : MonoSingleton<Game>
 {
     public Grid Grid1;
     public Grid Grid2;
@@ -19,6 +21,8 @@
             return Levels[_currentLevel];
         }
     }
+
+    public UnityEvent OnWin = new UnityEvent();
 
     public bool AreBothAt(Coordinates coords)
     {
@@ -68,17 +72,15 @@
                     {
                         Grid1.gate.Lights[lastLevelIndex].SetActive(true);
                     }
-                    else
-                    {
-                        Grid1.gate.TurnOn();
-                    }
 
                     if (lastLevelIndex < Grid2.gate.Lights.Length)
                     {
                         Grid2.gate.Lights[lastLevelIndex].SetActive(true);
                     }
-                    else
+                    if (lastLevelIndex + 1 == Levels.Length)
                     {
+                        Grid1.gate.TurnOn();
+                        OnWin.Invoke();
                         Grid2.gate.TurnOn();
                     }
 
