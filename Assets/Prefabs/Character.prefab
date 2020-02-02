@@ -75,6 +75,8 @@ MonoBehaviour:
   rotateSpeed: 8
   moveSpeed: 3
   start: 0
+  startGame: {fileID: 0}
+  playerNum: 0
 --- !u!114 &120935867
 MonoBehaviour:
   m_ObjectHideFlags: 0

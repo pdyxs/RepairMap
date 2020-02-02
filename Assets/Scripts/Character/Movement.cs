@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     public bool OppositeControls = false;
     public float SelectDelay = 1f;
 
-    public Input controls;
+    //public Input controls;
 
 
     public Vector3 offset;
@@ -41,13 +41,27 @@ public class Movement : MonoBehaviour
 
     PlayerInput playerInput;
     InputAction action;
+    InputAction startAction;
+
+    public StartGame startGame;
+    public int playerNum = 0;
 
     private void Awake()
     {
-        //controls.Player1.Movement.performed += ctx => Movement_performed(ctx.ReadValue<Vector2>());
+       
     }
 
-        
+
+    private void StartAction_performed(InputAction.CallbackContext obj)
+    {
+        if (startGame != null)
+        {
+            startGame.StartPressed(playerNum);
+            Debug.Log("ACTION");
+        }
+    }
+
+
     public void OnMovement(Vector2 movementVec)
     {
         //Vector2 movementVec = inputValue.Get<Vector2>();
@@ -92,10 +106,21 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void OnEnable()
     {
         playerInput = this.GetComponent<PlayerInput>();
         action = playerInput.actions["Movement"];
+        startAction = playerInput.actions["Action"];
+
+
+        startAction.performed += StartAction_performed;
+    }
+
+    private void Start()
+    {
+
+
+
 
         if (characterMovementTrans == null)
         {
@@ -140,7 +165,9 @@ public class Movement : MonoBehaviour
         Vector2 movementValue = action.ReadValue<Vector2>();
         OnMovement(movementValue);
 
-        /*if (currentlyMoving == false)
+        
+
+        /*if (currentlyMoving == false)+
         {
             if ( //(Input.GetKeyDown(KeyCode.DownArrow))
             {
