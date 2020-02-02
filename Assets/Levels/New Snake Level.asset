@@ -80,4 +80,5 @@ MonoBehaviour:
   endCoords:
     x: 1
     y: 6
-  completedObjectPrefab: {fileID: 0}
+  completedObjectPrefab: {fileID: 5745140848465175049, guid: badd50b7fb0078f43875cbcbe73b0c15,
+    type: 3}

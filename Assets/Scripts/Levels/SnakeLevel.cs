@@ -17,6 +17,7 @@ public class SnakeLevel : Level
     {
         _grid1Object = null;
         _grid2Object = null;
+        finishingObjects = null;
     }
 
     private ActivateableObject[] Grid1Object
@@ -51,7 +52,7 @@ public class SnakeLevel : Level
         List<ActivateableObject> objectsReturn = new List<ActivateableObject>();
         foreach (SnakeSet snakeSet in locationObjets) 
         {
-            objectsReturn.Add( GameObject.Instantiate(snakeSet.GridObject, grid.squares[snakeSet.Location.y][snakeSet.Location.x].transform));
+            objectsReturn.Add(GameObject.Instantiate(snakeSet.GridObject, grid.squares[snakeSet.Location.y][snakeSet.Location.x].transform));
         }
 
         return objectsReturn.ToArray();
@@ -71,7 +72,26 @@ public class SnakeLevel : Level
 
     public override ActivateableObject[] ObjectsToShow => GridObjects;
 
-    public override ActivateableObject[] ObjectsToActivate => new ActivateableObject[] {};
+    private ActivateableObject[] finishingObjects;
+
+    public override ActivateableObject[] ObjectsToActivate
+    {
+        get
+        {
+            if (finishingObjects == null)
+            {
+                var ret = new List<ActivateableObject>();
+                var (o1, o2) = CreateAt(completedObjectPrefab, completedObjectPrefab, startCoords);
+                var (o3, o4) = CreateAt(completedObjectPrefab, completedObjectPrefab, endCoords);
+                o1.Show();
+                o2.Show();
+                o3.Show();
+                o4.Show();
+                finishingObjects = new[] { o1, o2, o3, o4 };
+            }
+            return finishingObjects;
+        }
+    }
 
     public override void OnSelectionChanged(Grid grid, GridSquare newSelection)
     {
@@ -104,6 +124,8 @@ public class SnakeLevel : Level
 
     public override bool IsFinished()
     {
+        if (Grid1.currentlySelected == null || Grid2.currentlySelected == null) return false;
+
         return (Game.instance[1].IsAt(startCoords) && Game.instance[2].IsAt(endCoords)) ||
             (Game.instance[2].IsAt(startCoords) && Game.instance[1].IsAt(endCoords));
     }
