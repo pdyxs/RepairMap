@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
+   public  bool disableMovement = false;
+
     public bool OppositeControls = false;
     public float SelectDelay = 1f;
 
@@ -64,6 +66,10 @@ public class Movement : MonoBehaviour
 
     public void OnMovement(Vector2 movementVec)
     {
+        if(disableMovement == true)
+        {
+            return;
+        }
         //Vector2 movementVec = inputValue.Get<Vector2>();
 
         if (currentlyMoving == false)
