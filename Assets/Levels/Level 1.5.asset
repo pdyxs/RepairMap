@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a4b3f906ff85547abfe12cd002c984, type: 3}
+  m_Name: Level 1.5
+  m_EditorClassIdentifier: 
+  Grid1ObjectPrefab: {fileID: 4012984230118792446, guid: 6df9a48a9e431c34d9f9cd9004b9508f,
+    type: 3}
+  Grid2ObjectPrefab: {fileID: 4012984230118792446, guid: 6df9a48a9e431c34d9f9cd9004b9508f,
+    type: 3}
+  stages:
+  - coords:
+      x: 2
+      y: 0
+  - coords:
+      x: 1
+      y: 4
+  - coords:
+      x: 4
+      y: 3
+  allAtOnce: 1

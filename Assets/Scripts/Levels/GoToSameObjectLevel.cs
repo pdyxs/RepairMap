@@ -76,6 +76,7 @@ public class GoToSameObjectLevel : Level
             if (StagesComplete < stages.Count && stages[StagesComplete].isSatisfied())
             {
                 MarkComplete(stages[StagesComplete]);
+                Debug.Log($"Finished Stage {StagesComplete}");
             }
         }
     }
