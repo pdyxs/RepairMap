@@ -1,0 +1,189 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!111 &4898332259850336633
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897380195062986854}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: f0503dec7649f7c42847e7227ea0bb5e, type: 2}
+  - {fileID: 7400000, guid: f5cbb66eca82d474ab3812cc27b45f81, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!1 &5128716469529693633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5128716469529693632}
+  - component: {fileID: 5128716469529693635}
+  - component: {fileID: 120935867}
+  m_Layer: 0
+  m_Name: Character2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5128716469529693632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128716469529693633}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.58, y: 0, z: -4.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 897380195063249194}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5128716469529693635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128716469529693633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f1f37cb3ca01944b393b335f2beba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OppositeControls: 1
+  SelectDelay: 2
+  offset: {x: 0, y: 0, z: 0}
+  DefaultGrid: {fileID: 0}
+  CurrentGrid: {fileID: 0}
+  characterMovementTrans: {fileID: 5128716469529693632}
+  characterRotationTrans: {fileID: 897380195063249194}
+  anim: {fileID: 4898332259850336633}
+  floatAnim: Floatmove
+  wobbleAnim: Wooblemove
+  rotateSpeed: 8
+  moveSpeed: 3
+  start: 0
+--- !u!114 &120935867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128716469529693633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 4500fe3b83e6582478a76776d443167f,
+    type: 3}
+  m_NotificationBehavior: 3
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b86001f3-3632-46ba-9724-c83fba1f3b10
+    m_ActionName: Player1/Movement[/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/dpad/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3a56906c-e7cd-4ee5-9d07-a31622286d1a
+    m_ActionName: Player2/Movement[/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/up,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/dpad/right]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: controller
+  m_DefaultActionMap: Player1
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!1001 &897380195062864942
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5128716469529693632}
+    m_Modifications:
+    - target: {fileID: 110800, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_Name
+      value: Character_Male_Baird_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 419076, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419076, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419076, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419076, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419076, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419076, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419076, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 419076, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419076, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419076, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419076, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9571340, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 97c46f85ed671244b83b2409f56039d1, type: 3}
+--- !u!4 &897380195063249194 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 419076, guid: 97c46f85ed671244b83b2409f56039d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 897380195062864942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &897380195062986854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 156744, guid: 97c46f85ed671244b83b2409f56039d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 897380195062864942}
+  m_PrefabAsset: {fileID: 0}
