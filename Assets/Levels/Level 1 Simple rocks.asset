@@ -16,5 +16,14 @@ MonoBehaviour:
     type: 3}
   Grid2ObjectPrefab: {fileID: 1900476200349650887, guid: 6a47a445a57a7e643a07bd4893801571,
     type: 3}
-  x: 4
-  y: 4
+  stages:
+  - coords:
+      x: 4
+      y: 4
+  - coords:
+      x: 2
+      y: 2
+  - coords:
+      x: 2
+      y: 6
+  allAtOnce: 0
