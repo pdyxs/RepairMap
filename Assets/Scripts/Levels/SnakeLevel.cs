@@ -22,7 +22,8 @@ public class SnakeLevel : Level
             return _grid1Object;
         }
     }
-    private ActivateableObject[] _grid1Object;
+    private ActivateableObject[] _grid1Object = null;
+
     private ActivateableObject[] Grid2Object
     {
         get
@@ -34,7 +35,7 @@ public class SnakeLevel : Level
             return _grid2Object;
         }
     }
-    private ActivateableObject[] _grid2Object;
+    private ActivateableObject[] _grid2Object = null;
 
 
     ActivateableObject[] returnObjectsToShow(Coordinates[] locationObjets, ActivateableObject actObjects)
