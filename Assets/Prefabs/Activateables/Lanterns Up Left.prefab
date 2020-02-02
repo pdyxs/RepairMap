@@ -1,17 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &9208652534097804882
+--- !u!1001 &3185585918141429687
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1568028200388616970, guid: 05015d64b95cf1c499c8c022813d3df9,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1568028200388616970, guid: 05015d64b95cf1c499c8c022813d3df9,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -75,22 +70,12 @@ PrefabInstance:
     - target: {fileID: 2020439325917161946, guid: 05015d64b95cf1c499c8c022813d3df9,
         type: 3}
       propertyPath: m_Name
-      value: Lanterns Up
+      value: Lanterns Up Left
       objectReference: {fileID: 0}
     - target: {fileID: 6221162557109097238, guid: 05015d64b95cf1c499c8c022813d3df9,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6221162557109097238, guid: 05015d64b95cf1c499c8c022813d3df9,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8663030417349870898, guid: 05015d64b95cf1c499c8c022813d3df9,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8663030417349870898, guid: 05015d64b95cf1c499c8c022813d3df9,
         type: 3}
