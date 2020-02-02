@@ -68,9 +68,18 @@
                     {
                         Grid1.gate.Lights[lastLevelIndex].SetActive(true);
                     }
+                    else
+                    {
+                        Grid1.gate.TurnOn();
+                    }
+
                     if (lastLevelIndex < Grid2.gate.Lights.Length)
                     {
                         Grid2.gate.Lights[lastLevelIndex].SetActive(true);
+                    }
+                    else
+                    {
+                        Grid2.gate.TurnOn();
                     }
 
                     var newLevel = CurrentLevel;

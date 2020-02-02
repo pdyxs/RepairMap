@@ -71,7 +71,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
         }
         if (!_isInitialized)
         {
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             _isInitialized = true;
             m_Instance.Init();
         }
