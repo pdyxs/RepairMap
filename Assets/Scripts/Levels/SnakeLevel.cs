@@ -5,11 +5,21 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Levels/Stand on end of snakes")]
 public class SnakeLevel : Level
 {
-    public ActivateableObject Grid1ObjectPrefab; //1 straight //2 diag
-    public ActivateableObject Grid2ObjectPrefab;//1 straight //2 diag
+    //1 left
+    //2 up
+    //3 diag left
+    //4 diag right
+    //public ActivateableObject[] Grid1ObjectPrefab;
+   // public ActivateableObject[] Grid2ObjectPrefab;
 
-    public Coordinates[] Grid1ObjectLocations;
-    public Coordinates[] Grid2ObjectLocations;
+    public SnakeSet[] Grid1Snake;
+    public SnakeSet[] Grid2Snake;
+
+    private void OnEnable()
+    {
+        _grid1Object = null;
+        _grid2Object = null;
+    }
 
     private ActivateableObject[] Grid1Object
     {
@@ -17,7 +27,7 @@ public class SnakeLevel : Level
         {
             if (_grid1Object == null)
             {
-                _grid1Object = returnObjectsToShow(Grid1ObjectLocations, Grid1ObjectPrefab); // GameObject.Instantiate(Grid1ObjectPrefab, Game.instance.Grid1.squares[y][x].transform);
+                _grid1Object = returnObjectsToShow(Grid1Snake, Game.instance.Grid1); // GameObject.Instantiate(Grid1ObjectPrefab, Game.instance.Grid1.squares[y][x].transform);
             }
             return _grid1Object;
         }
@@ -30,7 +40,7 @@ public class SnakeLevel : Level
         {
             if (_grid2Object == null)
             {
-               _grid2Object = returnObjectsToShow(Grid2ObjectLocations, Grid2ObjectPrefab);
+               _grid2Object = returnObjectsToShow(Grid2Snake, Game.instance.Grid2);
             }
             return _grid2Object;
         }
@@ -38,12 +48,12 @@ public class SnakeLevel : Level
     private ActivateableObject[] _grid2Object = null;
 
 
-    ActivateableObject[] returnObjectsToShow(Coordinates[] locationObjets, ActivateableObject actObjects)
+    ActivateableObject[] returnObjectsToShow(SnakeSet[] locationObjets, Grid grid)
     {
         List<ActivateableObject> objectsReturn = new List<ActivateableObject>();
-        foreach (Coordinates location in locationObjets)
+        foreach (SnakeSet snakeSet in locationObjets) 
         {
-            objectsReturn.Add( GameObject.Instantiate(actObjects, Game.instance.Grid1.squares[location.y][location.x].transform));
+            objectsReturn.Add( GameObject.Instantiate(snakeSet.GridObject, grid.squares[snakeSet.Location.y][snakeSet.Location.x].transform));
         }
 
         return objectsReturn.ToArray();
@@ -72,9 +82,13 @@ public class SnakeLevel : Level
     public override bool IsFinished()
     {
         return false;
-        /*Grid1.currentlySelected != null &&
-            Grid1.currentlySelected.MyObjects.Contains(Grid1Object) &&
-            Grid2.currentlySelected != null &&
-            Grid2.currentlySelected.MyObjects.Contains(Grid2Object);*/
     }
+}
+
+[System.Serializable]
+public class SnakeSet
+{
+    public ActivateableObject GridObject;
+    public Coordinates Location;
+
 }
