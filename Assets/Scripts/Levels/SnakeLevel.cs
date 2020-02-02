@@ -5,15 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Levels/Stand on end of snakes")]
 public class SnakeLevel : Level
 {
-    //1 left
-    //2 up
-    //3 diag left
-    //4 diag right
-    //public ActivateableObject[] Grid1ObjectPrefab;
-   // public ActivateableObject[] Grid2ObjectPrefab;
-
     public SnakeSet[] Grid1Snake;
     public SnakeSet[] Grid2Snake;
+
+    public Coordinates startCoords;
+    public Coordinates endCoords;
+
+    public ActivateableObject completedObjectPrefab;
 
     private void OnEnable()
     {
@@ -27,7 +25,7 @@ public class SnakeLevel : Level
         {
             if (_grid1Object == null)
             {
-                _grid1Object = returnObjectsToShow(Grid1Snake, Game.instance.Grid1); // GameObject.Instantiate(Grid1ObjectPrefab, Game.instance.Grid1.squares[y][x].transform);
+                _grid1Object = returnObjectsToShow(Grid1Snake, Game.instance.Grid1);
             }
             return _grid1Object;
         }
@@ -75,13 +73,39 @@ public class SnakeLevel : Level
 
     public override ActivateableObject[] ObjectsToActivate => new ActivateableObject[] {};
 
-
-
+    public override void OnSelectionChanged(Grid grid, GridSquare newSelection)
+    {
+        base.OnSelectionChanged(grid, newSelection);
+        if (Grid1.currentlySelected == null || Grid2.currentlySelected == null) return;
+        if (Game.instance[1].IsAt(startCoords) || Game.instance[1].IsAt(endCoords) ||
+            Game.instance[2].IsAt(startCoords) || Game.instance[2].IsAt(endCoords))
+        {
+            foreach (var obj in Grid1Object)
+            {
+                obj.MarkComplete();
+            }
+            foreach (var obj in Grid2Object)
+            {
+                obj.MarkComplete();
+            }
+        } else
+        {
+            foreach (var obj in Grid1Object)
+            {
+                obj.UnmarkComplete();
+            }
+            foreach (var obj in Grid2Object)
+            {
+                obj.UnmarkComplete();
+            }
+        }
+    }
 
 
     public override bool IsFinished()
     {
-        return false;
+        return (Game.instance[1].IsAt(startCoords) && Game.instance[2].IsAt(endCoords)) ||
+            (Game.instance[2].IsAt(startCoords) && Game.instance[1].IsAt(endCoords));
     }
 }
 
@@ -90,5 +114,4 @@ public class SnakeSet
 {
     public ActivateableObject GridObject;
     public Coordinates Location;
-
 }

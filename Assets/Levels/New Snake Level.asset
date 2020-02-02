@@ -13,28 +13,71 @@ MonoBehaviour:
   m_Name: New Snake Level
   m_EditorClassIdentifier: 
   Grid1Snake:
-  - GridObject: {fileID: 1900476200349650887, guid: 9ee353648cb25ca42892c54bedf20138,
-      type: 3}
-    Location:
-      x: 0
-      y: 0
-  - GridObject: {fileID: 1900476200349650887, guid: c2b0373ba1859004186e047afdcb062f,
-      type: 3}
-    Location:
-      x: 3
-      y: 3
-  Grid2Snake:
-  - GridObject: {fileID: 1900476200349650887, guid: 1d6adf1a83fa5e340875723a1eac7241,
-      type: 3}
-    Location:
-      x: 4
-      y: 4
-  - GridObject: {fileID: 1900476200349650887, guid: a18931542ce61f8439f5745f180b477f,
+  - GridObject: {fileID: 7966883897292182263, guid: c2b0373ba1859004186e047afdcb062f,
       type: 3}
     Location:
       x: 1
+      y: 6
+  - GridObject: {fileID: 1900476200349650887, guid: 9ee353648cb25ca42892c54bedf20138,
+      type: 3}
+    Location:
+      x: 2
+      y: 5
+  - GridObject: {fileID: 3296986202142215442, guid: 2fe1b3ad664b8c6438b38159d9a6a9cb,
+      type: 3}
+    Location:
+      x: 2
+      y: 3
+  - GridObject: {fileID: 5911691165457675072, guid: 05015d64b95cf1c499c8c022813d3df9,
+      type: 3}
+    Location:
+      x: 5
+      y: 0
+  - GridObject: {fileID: 1900476200349650887, guid: 9ee353648cb25ca42892c54bedf20138,
+      type: 3}
+    Location:
+      x: 4
+      y: 2
+  - GridObject: {fileID: 7966883897292182263, guid: c2b0373ba1859004186e047afdcb062f,
+      type: 3}
+    Location:
+      x: 5
+      y: 2
+  Grid2Snake:
+  - GridObject: {fileID: 3296986202142215442, guid: 2fe1b3ad664b8c6438b38159d9a6a9cb,
+      type: 3}
+    Location:
+      x: 3
+      y: 5
+  - GridObject: {fileID: 9097256166024873207, guid: 1d6adf1a83fa5e340875723a1eac7241,
+      type: 3}
+    Location:
+      x: 3
+      y: 4
+  - GridObject: {fileID: 7966883897292182263, guid: c2b0373ba1859004186e047afdcb062f,
+      type: 3}
+    Location:
+      x: 2
+      y: 2
+  - GridObject: {fileID: 7966883897292182263, guid: c2b0373ba1859004186e047afdcb062f,
+      type: 3}
+    Location:
+      x: 3
       y: 1
-  goal1GridX: 4
-  goal1GridY: 4
-  goal2GridX: 2
-  goal2GridY: 2
+  - GridObject: {fileID: 9097256166024873207, guid: 1d6adf1a83fa5e340875723a1eac7241,
+      type: 3}
+    Location:
+      x: 6
+      y: 1
+  - GridObject: {fileID: 5911691165457675072, guid: 05015d64b95cf1c499c8c022813d3df9,
+      type: 3}
+    Location:
+      x: 5
+      y: 2
+  startCoords:
+    x: 3
+    y: 2
+  endCoords:
+    x: 1
+    y: 6
+  completedObjectPrefab: {fileID: 0}
