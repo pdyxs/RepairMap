@@ -308,7 +308,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 692676224}
-  - component: {fileID: 3964324083132537282}
   m_Layer: 0
   m_Name: Game Logic
   m_TagString: Untagged
@@ -580,18 +579,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1652418295864985288}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &917628026 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1652418294556143916, guid: 7e3f164a74406244283ba0f4e6c54c79,
-    type: 3}
-  m_PrefabInstance: {fileID: 1652418295864985288}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e7cd281b699a84080bafeda41f22d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &919565449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -843,18 +830,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 660118587}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1195597065 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1652418294556143916, guid: 7e3f164a74406244283ba0f4e6c54c79,
-    type: 3}
-  m_PrefabInstance: {fileID: 660118587}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9e7cd281b699a84080bafeda41f22d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1499422475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1602,25 +1577,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e3f164a74406244283ba0f4e6c54c79, type: 3}
---- !u!114 &3964324083132537282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 692676223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fc842f38f40ef348afef7790d602e38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Grid1: {fileID: 917628026}
-  Grid2: {fileID: 1195597065}
-  endLevelDelay: 0.5
-  Levels:
-  - {fileID: 11400000, guid: 95874159eaf88414f87f4f8f790e3256, type: 2}
-  - {fileID: 11400000, guid: 7d900ecff372d11419fadf38fc403fd8, type: 2}
-  - {fileID: 11400000, guid: 821c37a12965eac4085abbe05c5cdb8a, type: 2}
 --- !u!114 &6040894324937925195
 MonoBehaviour:
   m_ObjectHideFlags: 0
