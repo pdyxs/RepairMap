@@ -45,6 +45,7 @@ public class ColoursLevel : Level
     public override void OnSelectionChanged(Grid grid, GridSquare newSelection)
     {
         base.OnSelectionChanged(grid, newSelection);
+        if (Grid1.currentlySelected == null || Grid2.currentlySelected == null) return;
         var grid1Prefab = PrefabAtCoords(Grid1.currentlySelected.x, Grid1.currentlySelected.y, 1);
         if (grid1Prefab == null)
         {
