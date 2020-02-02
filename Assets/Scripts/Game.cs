@@ -72,8 +72,10 @@
                     {
                         Grid2.gate.Lights[lastLevelIndex].SetActive(true);
                     }
-                    if (CurrentLevel != null)
-                        CurrentLevel.DoStartLevel();
+
+                    var newLevel = CurrentLevel;
+                    if (newLevel != null)
+                        TimeUtils.RunAfter(newLevel.DoStartLevel, 3);
                 }, endLevelDelay);
             }
         }

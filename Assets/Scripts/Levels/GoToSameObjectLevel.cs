@@ -76,7 +76,6 @@ public class GoToSameObjectLevel : Level
             if (StagesComplete < stages.Count && stages[StagesComplete].isSatisfied())
             {
                 MarkComplete(stages[StagesComplete]);
-                Debug.Log($"Finished Stage {StagesComplete}");
             }
         }
     }
@@ -88,10 +87,13 @@ public class GoToSameObjectLevel : Level
         
         if (!allAtOnce && StagesComplete < stages.Count)
         {
-            foreach (var obj in stages[StagesComplete].Objects(this))
+            TimeUtils.RunAfter(() =>
             {
-                obj.Show();
-            }
+                foreach (var obj in stages[StagesComplete].Objects(this))
+                {
+                    obj.Show();
+                }
+            }, 4);
         }
     }
 
