@@ -54,8 +54,11 @@ public class Movement : MonoBehaviour
 
     private void StartAction_performed(InputAction.CallbackContext obj)
     {
-        startGame.StartPressed(playerNum);
-        Debug.Log("ACTION");
+        if (startGame != null)
+        {
+            startGame.StartPressed(playerNum);
+            Debug.Log("ACTION");
+        }
     }
 
 
